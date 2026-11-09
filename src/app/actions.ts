@@ -187,23 +187,40 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
   if (!loginLimiter.hit(limitKey)) {
     return { error: { scope: "Auth.errors", key: "tooManyAttempts" } };
   }
-  const user = await db.user.findUnique({ where: { email: parsed.data.email } });
 
-  // Always run one hash verification so timing doesn't reveal whether the email exists.
-  const ok = await verifyPassword(user?.passwordHash ?? (await getConstantTimeHash()), parsed.data.password);
+  let user;
+  let ok = false;
+  try {
+    user = await db.user.findUnique({ where: { email: parsed.data.email } });
+    ok = await verifyPassword(user?.passwordHash ?? (await getConstantTimeHash()), parsed.data.password);
+  } catch (e) {
+    console.error("[login] database or password verification error:", e);
+    return { error: { scope: "Auth.errors", key: "generic" } };
+  }
 
   if (!user || !ok) {
-    await db.auditLog.create({
-      data: { actorId: user?.id ?? null, action: "auth.login.failed", ip },
-    });
+    try {
+      await db.auditLog.create({
+        data: { actorId: user?.id ?? null, action: "auth.login.failed", ip },
+      });
+    } catch (e) {
+      console.error("[login] auditLog failed:", e);
+    }
     return { error: { scope: "Auth.errors", key: "invalidCredentials" } };
   }
 
   loginLimiter.reset(limitKey);
-  await db.user.update({ where: { id: user.id }, data: { lastLoginAt: new Date() } });
-  await reactivateAutoDormant(user.id);
-  await db.auditLog.create({ data: { actorId: user.id, action: "auth.login", ip } });
-  await createSession(user.id, userAgent);
+
+  try {
+    await db.user.update({ where: { id: user.id }, data: { lastLoginAt: new Date() } });
+    await reactivateAutoDormant(user.id);
+    await db.auditLog.create({ data: { actorId: user.id, action: "auth.login", ip } });
+    await createSession(user.id, userAgent);
+  } catch (e) {
+    console.error("[login] session creation error:", e);
+    return { error: { scope: "Auth.errors", key: "generic" } };
+  }
+
   redirect({ href: "/dashboard", locale });
   return {};
 }
