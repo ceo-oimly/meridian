@@ -1,11 +1,11 @@
-// Paper-trading crypto maths in integers. Quantities are stored in units of 1e-8 coin.
+// Trading crypto maths in integers. Quantities are stored in units of 1e-8 coin.
 // Prices are USD per coin scaled by 1e8. All fiat amounts are USD cents.
 
 export const CRYPTO_ASSETS = [
-  { symbol: "BTC", name: "Bitcoin", coingeckoId: "bitcoin", demoPriceUsd: 65_000 },
-  { symbol: "ETH", name: "Ethereum", coingeckoId: "ethereum", demoPriceUsd: 3_200 },
-  { symbol: "SOL", name: "Solana", coingeckoId: "solana", demoPriceUsd: 150 },
-  { symbol: "XRP", name: "XRP", coingeckoId: "ripple", demoPriceUsd: 0.55 },
+  { symbol: "BTC", name: "Bitcoin", coingeckoId: "bitcoin", fallbackPriceUsd: 65_000 },
+  { symbol: "ETH", name: "Ethereum", coingeckoId: "ethereum", fallbackPriceUsd: 3_200 },
+  { symbol: "SOL", name: "Solana", coingeckoId: "solana", fallbackPriceUsd: 150 },
+  { symbol: "XRP", name: "XRP", coingeckoId: "ripple", fallbackPriceUsd: 0.55 },
 ] as const;
 
 export type CryptoSymbol = (typeof CRYPTO_ASSETS)[number]["symbol"];

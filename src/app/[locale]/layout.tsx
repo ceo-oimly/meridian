@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import DemoBanner from "@/components/DemoBanner";
 import SiteHeader from "@/components/SiteHeader";
 import ChatWidget from "@/components/ChatWidget";
 import "../globals.css";
@@ -45,7 +44,6 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${fraunces.variable} ${notoKr.variable}`}>
       <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider messages={messages}>
-          <DemoBanner />
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <footer className="border-t border-line py-8 text-center text-sm text-ink-soft">

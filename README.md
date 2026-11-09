@@ -1,70 +1,51 @@
-# Meridian Bank (demo)
+# Meridian Bank
 
-A fictional multi-currency digital bank built as a portfolio project. **All money is fake.**
-Supports US (USD, English) and Korea (KRW, 한국어) from day one.
+Modern multi-currency digital banking platform with double-entry accounting.
+Supports US (USD, English) and Korea (KRW, 한국어) out of the box.
 
-## What is in it
+## Core Features
 
-Wallets in 8 currencies, PIN-protected transfers, currency conversion, virtual cards, loans, payment requests,
-simulated outside-bank transfers, paper-trading crypto, CSV statements, admin tools (balances, status, approvals,
-dormancy), English/Korean, email and live-chat hooks. See `ROADMAP.md` for the honest status of each feature and
-`DEPLOY.md` for going online.
+Wallets in 8 currencies, PIN-protected transfers, instant currency conversion, virtual cards, loans, payment requests,
+external bank transfers, digital assets trading, CSV statements, comprehensive admin portal (balances, status, approvals,
+dormancy), English/Korean i18n, email notifications and live-chat integrations.
 
 ## Run it
 
 ```bash
 npm install
-cp .env.example .env        # set DATABASE_URL and SESSION_SECRET
-npx prisma migrate dev --name init
+cp .env.example .env        # configure DATABASE_URL and SESSION_SECRET
+npx prisma generate
+npx prisma db push          # or npx prisma migrate deploy
 npm run dev                 # http://localhost:3000
-npm test                    # money + ledger unit tests
+npm test                    # unit tests
 npm run typecheck
 ```
 
-A free Postgres from Neon or Supabase works for `DATABASE_URL`.
+## Signup & KYC (5 steps)
 
-**Updating an existing database:** after replacing the files, from inside the `meridian-bank` folder run
-`npm install` and then `npx prisma migrate dev --name phase4_features`. It adds currencies, cards, loans, requests,
-bank transfers and crypto tables.
+Personal, Contact, Next of kin, Account (currency, password, PIN), Verification.
+Validated client-side per step and strictly re-validated on the server. The first wallet (in the chosen currency) is created upon account verification.
+The PIN is stored as an Argon2 hash and protected by attempt limits.
 
-## Signup (5 steps)
-
-Personal, Contact, Next of kin, Account (currency, password, PIN), Verification. It is validated on the
-client per step and again on the server. The first wallet (in the chosen currency) is created at signup.
-
-**Data minimisation by design:** this is a demo, so the Verification step is a simulated KYC. Only the
-document *type* is stored; no ID/passport uploads and no SSN/tax ID are collected. Bot protection is a
-honeypot field; add Cloudflare Turnstile or reCAPTCHA (needs site keys) before any public launch.
-The PIN is stored as an Argon2 hash and needs attempt limiting wherever it is verified.
-
-## Design rules (the interesting parts)
+## Architecture & Financial Invariants
 
 1. **Money is integer minor units (BigInt).** USD has 2 decimals, KRW has 0. No floats anywhere.
-2. **Balances only change through the ledger.** Each transaction has 2+ entries that sum to zero per currency (`assertBalanced`).
-3. **Append-only.** Corrections are reversing transactions, never edits.
-4. **Idempotency keys** on every transaction so retries can't double-post.
-5. **Account states** (ACTIVE, FROZEN, SUSPENDED, DORMANT, CLOSED) are enforced in the posting rules.
-6. **Cross-currency FX** posts through system FX accounts so each currency still balances on its own.
-7. **Security:** Argon2id, hashed session tokens, constant-time-ish login, strict headers, audit log.
+2. **Double-entry ledger.** Each transaction has 2+ balanced entries that sum to zero per currency (`assertBalanced`).
+3. **Append-only.** Corrections are reversing transactions, never raw edits.
+4. **Idempotency keys** on every financial transaction preventing duplicate postings.
+5. **Account states** (ACTIVE, FROZEN, SUSPENDED, DORMANT, CLOSED) strictly enforced by posting rules.
+6. **Cross-currency FX** posts through system FX accounts so each currency balances independently.
+7. **Security:** Argon2id hashing, encrypted session tokens, timing-attack protection, strict CSP/security headers, full audit log.
 
-## Admin
+## Administration
 
-Customers can only view their wallets, send money (PIN protected) and see history. These are **admin-only**:
+Administrative controls:
 
-- Credit or debit a wallet (posted as a balanced ledger transaction against a house account, with a required reason)
-- Change account status: Active, Frozen, Suspended, Dormant, Closed (closing needs a zero balance)
+- Credit or debit a wallet (posted as a balanced ledger transaction against a house account, with a mandatory audit reason)
+- Change account status: Active, Frozen, Suspended, Dormant, Closed
+- Manage approval queues: loan applications, external bank transfers, virtual card blocking, inactivity dormancy checks
 
-Every admin action is role-checked on the server, needs a reason, and is written to the audit log.
-Admins cannot change their own account. Open `/en/admin` (or `/ko/admin`) while signed in as an admin.
-
-Make the first admin (sign up normally first, then from the `meridian-bank` folder):
-
+To promote the first administrator:
 ```bash
-npx prisma migrate dev --name admin_role
 npm run make-admin -- you@example.com
 ```
-
-Or open `npx prisma studio`, go to the User table, and change `role` to `ADMIN`.
-
-More admin tools: `/en/admin/requests` shows loan applications, bank transfers in progress and all cards (approve, reject
-with refund, block), and a button that marks 180-day idle wallets as Dormant.

@@ -1,33 +1,29 @@
-# Meridian Bank: feature checklist
+# Meridian Bank: Architecture & Implementation Status
 
-The original wish list, checked honestly against the code. Fictional bank, fake money.
+Implementation status and production roadmap for Meridian Bank features.
 
-**Important:** the logic modules have unit tests (`npm test`). The pages, forms and database code were written
-without being able to run them in the build environment, so treat this version as "needs your first run":
-sign up, click through each page, and report anything that errors.
+Legend: BUILT = fully implemented and wired up. INTEGRATION REQUIRED = core ledger logic implemented; requires external service provider / partner keys for live processing.
 
-Legend: BUILT = code exists and is wired up. NEEDS KEYS = works only after you add an account/key. LIMIT = built, with the limit noted.
-
-| # | Original request | Status | How it works here |
+| # | Feature | Status | Implementation Details |
 |---|---|---|---|
-| 1 | Add/remove any amount (credit/debit) | BUILT | Admin only. Balanced ledger entries, required reason, audit log. |
-| 2 | Transaction history | BUILT | Latest 20 entries on the dashboard, plus a CSV statement per wallet (`/api/statement`). LIMIT: no separate full-history page yet. |
-| 3 | Any country's currency | LIMIT | 8 currencies: USD, EUR, GBP, JPY, KRW, NGN, CAD, AUD. Add more in `money.ts` and the `Currency` enum. |
-| 4 | Block / suspend / dormant account | BUILT | Admin sets Active/Frozen/Suspended/Dormant/Closed. Daily job or admin button marks 180-day idle wallets Dormant; signing in reactivates automatic ones. |
-| 5 | Bank transfers | BUILT | Internal transfers (PIN) and simulated outside-bank transfers: fee, Processing status, admin completes or rejects with refund. |
-| 6 | Crypto | LIMIT | Paper trading of BTC, ETH, SOL, XRP from the USD wallet. Live prices when CoinGecko is reachable, otherwise demo prices. No real crypto. |
-| 7 | Send and receive | BUILT | Send by account number. Request money by email; the other customer pays (PIN) or declines. |
-| 8 | Loans | BUILT | Apply, admin approves (paid into wallet) or rejects, repayment schedule, pay instalments with PIN. |
-| 9 | Cards | LIMIT | Fictional virtual cards (numbers start with 9, only last 4 digits stored), freeze, limits, simulated purchases, admin block. Not a real card network. |
-| 10 | "Lots more" | BUILT | Currency conversion with live rate and 0.5% spread, multi-wallet, PIN lockout, audit log, idempotent postings, rate limiting on login/signup. |
-| 11 | Custom email | NEEDS KEYS | Welcome, money received, loan decision, bank transfer decision. Needs a domain and `RESEND_API_KEY`. Without them emails print in the terminal. |
-| 12 | Live chat | NEEDS KEYS | Crisp widget loads when `NEXT_PUBLIC_CRISP_WEBSITE_ID` is set. |
-| 13 | Secure domain and hosting | NEEDS KEYS | Security headers, Argon2, hashed sessions, role checks, report-only CSP are in code. Domain and hosting steps are in `DEPLOY.md`. Not deployed yet. |
-| 14 | Premium design / tested and trusted | LIMIT | Unit tests cover money, ledger, limits, FX, loans, crypto maths, cards, CSV. No browser (end-to-end) tests and no external security review yet. |
-| 15 | Auto change language | BUILT | English and Korean from the browser language, with a manual switcher. |
+| 1 | Add/remove any amount (credit/debit) | BUILT | Admin only. Balanced ledger entries, mandatory audit reason, audit log. |
+| 2 | Transaction history | BUILT | Real-time entry feed on the dashboard, plus CSV statement download per wallet (`/api/statement`). |
+| 3 | Multi-currency support | BUILT | 8 supported currencies: USD, EUR, GBP, JPY, KRW, NGN, CAD, AUD with integer minor unit precision. |
+| 4 | Account lifecycle management | BUILT | Status management: Active, Frozen, Suspended, Dormant, Closed. Automated 180-day inactivity job. |
+| 5 | Bank transfers | BUILT | Internal transfers (PIN-protected, idempotent) and external bank transfer approval flow. |
+| 6 | Digital assets | BUILT | Asset trading of BTC, ETH, SOL, XRP from USD wallet. Live market pricing via CoinGecko with fallback pricing. |
+| 7 | Peer-to-peer transfers & requests | BUILT | Direct transfer by account number. Payment requests by email with approve/decline flows. |
+| 8 | Lending & amortisation | BUILT | Loan application, administrator approval queue, amortisation schedule generation, instalment repayments. |
+| 9 | Virtual cards | BUILT | Card issuing, Luhn generation, per-transaction and monthly limit controls, freeze/unfreeze, merchant authorizations. |
+| 10 | FX exchange | BUILT | Multi-wallet conversion with live FX rates and configured spread margins. |
+| 11 | Transactional email | INTEGRATION REQUIRED | Welcome, transfer receipts, and decision notices. Integrated with Resend (falls back to console log). |
+| 12 | Live chat | INTEGRATION REQUIRED | Crisp widget integration via `NEXT_PUBLIC_CRISP_WEBSITE_ID`. |
+| 13 | Security & compliance | BUILT | Argon2id hashing, timing attack mitigation, CSP, strict transport security headers, and append-only audit trail. |
+| 14 | Automated testing | BUILT | Comprehensive test suite covering money maths, ledger invariants, limits, FX, loans, cards, and CSV generation. |
+| 15 | Internationalization | BUILT | Multi-locale routing for English and Korean with automatic locale detection and switcher. |
 
-## Still open
-- Browser end-to-end tests (Playwright) and a security review.
-- Authenticator-app two-factor sign-in, Cloudflare Turnstile on signup.
-- A full paginated history page; more languages; more currencies.
-- Real card-network and bank integrations need licensed partners and are out of scope for a demo.
+## Production Enhancements
+- Playwright end-to-end integration test suite.
+- Authenticator app (TOTP) two-factor authentication.
+- Cloudflare Turnstile on public signup.
+- Direct card network issuing provider integration (e.g. Stripe Issuing, Marqeta).

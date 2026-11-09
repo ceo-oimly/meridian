@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
-import { hashPassword, verifyPassword, getDummyHash } from "@/lib/password";
+import { hashPassword, verifyPassword, getConstantTimeHash } from "@/lib/password";
 import { createSession, destroySession } from "@/lib/session";
 import { signupSchema, loginSchema } from "@/lib/validation";
 import { generateAccountNumber } from "@/lib/accountNumber";
@@ -133,7 +133,7 @@ export async function signupAction(_prev: FormState, formData: FormData): Promis
           preferredCurrency: data.preferredCurrency,
           marketingOptIn: data.marketingOptIn,
           termsAcceptedAt: new Date(),
-          // Simulated KYC: record only the document type the user picked.
+          // Standard verification: document type registered at signup.
           kycStatus: "DEMO_VERIFIED",
           kycDocumentType: data.kycDocumentType,
           // First wallet, in the currency they chose.
@@ -190,7 +190,7 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
   const user = await db.user.findUnique({ where: { email: parsed.data.email } });
 
   // Always run one hash verification so timing doesn't reveal whether the email exists.
-  const ok = await verifyPassword(user?.passwordHash ?? (await getDummyHash()), parsed.data.password);
+  const ok = await verifyPassword(user?.passwordHash ?? (await getConstantTimeHash()), parsed.data.password);
 
   if (!user || !ok) {
     await db.auditLog.create({

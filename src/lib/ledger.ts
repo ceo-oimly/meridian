@@ -56,7 +56,7 @@ export function assertStatusAllows(status: AccountStatus, posting: Posting): voi
   }
 }
 
-/** Customer accounts cannot go negative. System accounts may (they fund demo money). */
+/** Customer accounts cannot go negative. System accounts may (they act as settlement / central reserves). */
 export function assertSufficientFunds(
   currentBalanceMinor: bigint,
   posting: Posting,

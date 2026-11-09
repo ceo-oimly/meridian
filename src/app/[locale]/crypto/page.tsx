@@ -25,7 +25,7 @@ export default async function CryptoPage({ params }: { params: Promise<{ locale:
       <div className="mx-auto max-w-6xl px-5 py-10">
         <h1 className="font-display text-3xl font-semibold">{t("title")}</h1>
         <p className="mt-1 max-w-2xl text-sm text-ink-soft">{t("subtitle")}</p>
-        <p className="mt-2 text-xs text-ink-soft">{live ? t("live") : t("demoPrices")}</p>
+        <p className="mt-2 text-xs text-ink-soft">{live ? t("live") : t("fallbackPrices")}</p>
 
         <section className={`${panelClass} mt-6`}>
           <h2 className="font-display text-lg font-semibold">{t("market")}</h2>

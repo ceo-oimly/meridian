@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -27,6 +28,7 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  outputFileTracingRoot: path.resolve(__dirname),
   async headers() {
     const headers =
       process.env.NODE_ENV === "production"

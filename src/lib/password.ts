@@ -21,8 +21,8 @@ export async function verifyPassword(passwordHash: string, password: string): Pr
 
 // A real hash, created once, that is verified when the email is unknown so response time
 // doesn't reveal whether an account exists.
-let dummyHash: Promise<string> | undefined;
-export function getDummyHash(): Promise<string> {
-  dummyHash ??= hashPassword("not-a-real-password-for-timing-only");
-  return dummyHash;
+let constantTimeHash: Promise<string> | undefined;
+export function getConstantTimeHash(): Promise<string> {
+  constantTimeHash ??= hashPassword("not-a-real-password-for-timing-only");
+  return constantTimeHash;
 }

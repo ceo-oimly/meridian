@@ -47,7 +47,7 @@ export const signupSchema = z
     password: z.string().min(12, "passwordShort").max(200, "passwordShort"),
     confirmPassword: z.string(),
     pin: z.string().refine(isValidPin, "pinInvalid"),
-    // Demo verification + consent
+    // Verification + consent
     kycDocumentType: z.enum(KYC_DOCUMENT_TYPES, { message: "kycDocumentInvalid" }),
     kycAck: z.boolean().refine((v) => v === true, "kycAckRequired"),
     marketingOptIn: z.boolean(),

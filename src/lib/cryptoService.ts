@@ -14,13 +14,13 @@ type Prices = Record<CryptoSymbol, bigint>;
 let cache: { at: number; prices: Prices; live: boolean } | null = null;
 const TTL_MS = 60_000;
 
-function demoPrices(): Prices {
+function fallbackPrices(): Prices {
   const out = {} as Prices;
-  for (const a of CRYPTO_ASSETS) out[a.symbol] = parsePriceUsd(a.demoPriceUsd)!;
+  for (const a of CRYPTO_ASSETS) out[a.symbol] = parsePriceUsd(a.fallbackPriceUsd)!;
   return out;
 }
 
-/** USD price per coin (fixed point, 1e8). Live from CoinGecko when reachable, otherwise demo prices. */
+/** USD price per coin (fixed point, 1e8). Live from CoinGecko when reachable, otherwise fallback prices. */
 export async function getCryptoPrices(): Promise<{ prices: Prices; live: boolean }> {
   if (cache && Date.now() - cache.at < TTL_MS) return cache;
   try {
@@ -30,7 +30,7 @@ export async function getCryptoPrices(): Promise<{ prices: Prices; live: boolean
     });
     if (!res.ok) throw new Error(`status ${res.status}`);
     const json = (await res.json()) as Record<string, { usd?: number }>;
-    const prices = demoPrices();
+    const prices = fallbackPrices();
     let found = 0;
     for (const a of CRYPTO_ASSETS) {
       const p = parsePriceUsd(json[a.coingeckoId]?.usd ?? NaN);
@@ -41,8 +41,8 @@ export async function getCryptoPrices(): Promise<{ prices: Prices; live: boolean
     }
     cache = { at: Date.now(), prices, live: found === CRYPTO_ASSETS.length };
   } catch (e) {
-    console.warn("[crypto] using demo prices:", e instanceof Error ? e.message : e);
-    cache = { at: Date.now() - TTL_MS + 30_000, prices: demoPrices(), live: false };
+    console.warn("[crypto] using fallback prices:", e instanceof Error ? e.message : e);
+    cache = { at: Date.now() - TTL_MS + 30_000, prices: fallbackPrices(), live: false };
   }
   return cache;
 }

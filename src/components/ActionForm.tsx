@@ -32,7 +32,7 @@ export function StateMessage({ state, ns = "Wallet", infoLabel, infoHint }: {
   if (state.error) {
     return (
       <p role="alert" className="rounded-lg bg-danger/10 px-3 py-2 text-sm text-danger">
-        {t(`errors.${state.error}` as never, { count: state.attemptsLeft ?? 0 })}
+        {(t as (key: string, values?: Record<string, unknown>) => string)(`errors.${state.error}`, { count: state.attemptsLeft ?? 0 })}
       </p>
     );
   }

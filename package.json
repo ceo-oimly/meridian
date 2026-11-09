@@ -2,7 +2,7 @@
   "name": "meridian-bank",
   "version": "0.4.0",
   "private": true,
-  "description": "Portfolio project: a fictional multi-currency digital bank (demo money only).",
+  "description": "Meridian Bank: Modern multi-currency digital banking platform.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

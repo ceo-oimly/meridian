@@ -10,11 +10,11 @@ export function welcomeEmail(locale: string, name: string): Mail {
   return L(locale) === "ko"
     ? {
         subject: "메리디언 뱅크에 오신 것을 환영합니다",
-        text: `${name}님, 환영합니다!\n\n계정이 생성되었습니다. 메리디언은 포트폴리오용 데모이며 모든 금액은 가상입니다.\n\n- 메리디언 뱅크`,
+        text: `${name}님, 환영합니다!\n\n메리디언 뱅크 계좌가 개설되었습니다. 지금 바로 다중 통화 지갑과 금융 서비스를 이용해 보세요.\n\n- 메리디언 뱅크`,
       }
     : {
         subject: "Welcome to Meridian Bank",
-        text: `Hi ${name},\n\nYour account is ready. Meridian is a portfolio demo and all money is fake.\n\n- Meridian Bank`,
+        text: `Hi ${name},\n\nYour account is ready. Welcome to Meridian Bank. You can now access your multi-currency wallets and financial services.\n\n- Meridian Bank`,
       };
 }
 

@@ -35,7 +35,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
 
-        {/* Decorative balance card: static sample numbers only. */}
+        {/* Decorative balance card */}
         <div aria-hidden className="relative">
           <div className="absolute -inset-4 rounded-[2rem] bg-accent/20 blur-2xl" />
           <div className="relative rounded-3xl bg-brand p-8 text-white shadow-2xl">

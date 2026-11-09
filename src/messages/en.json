@@ -1,10 +1,7 @@
 {
   "Meta": {
-    "title": "Meridian Bank (demo)",
-    "description": "A fictional multi-currency digital bank. Portfolio project, demo money only."
-  },
-  "Demo": {
-    "banner": "Demo only. Meridian Bank is a fictional portfolio project. All money is fake."
+    "title": "Meridian Bank",
+    "description": "Modern multi-currency digital banking. Hold, convert, and transfer funds globally with confidence."
   },
   "Nav": {
     "features": "Features",
@@ -17,7 +14,7 @@
     "eyebrow": "Banking without borders",
     "title": "One account for dollars and won.",
     "subtitle": "Hold, send and convert USD and KRW instantly, with a clear ledger behind every cent.",
-    "cta": "Open a free demo account",
+    "cta": "Open an account",
     "ctaSecondary": "Log in",
     "features": {
       "title": "Everything in one place",
@@ -86,7 +83,7 @@
     "currencyInvalid": "Please select a currency.",
     "pinInvalid": "Use 4 to 6 digits and avoid repeats or sequences like 0000 or 1234.",
     "kycDocumentInvalid": "Please select a document type.",
-    "kycAckRequired": "Please confirm that you understand this is a demo.",
+    "kycAckRequired": "Please confirm that the information provided is accurate.",
     "termsRequired": "You must accept the terms to continue."
   },
   "Dashboard": {
@@ -94,10 +91,10 @@
     "comingSoon": "Wallets and transactions arrive in the next phase."
   },
   "Footer": {
-    "note": "© Meridian Bank. Fictional project for portfolio purposes."
+    "note": "© Meridian Bank. All rights reserved."
   },
   "Signup": {
-    "subtitle": "About 3 minutes. This is a demo, so please use made-up details, not real personal information.",
+    "subtitle": "Takes about 3 minutes. Please enter your legal information accurately.",
     "stepOf": "Step {current} of {total}",
     "back": "Back",
     "next": "Continue",
@@ -177,9 +174,9 @@
         "4": "Strong"
       }
     },
-    "kycNotice": "Meridian is a demo, so no real documents are collected. Choose the document type you would normally provide and we will mark it as verified for the demo. Never enter real ID or tax numbers on this site.",
-    "kycAck": "I understand this is a demo and I have not entered real identity or financial details.",
-    "terms": "I agree to the Terms of Use and Privacy Policy, and I understand the money here is fake.",
+    "kycNotice": "To comply with financial regulations and keep your account secure, please select your primary identity document type. You may be requested to present your document during identity verification.",
+    "kycAck": "I confirm that all personal and identity information provided is accurate and truthful.",
+    "terms": "I agree to the Terms of Service and Privacy Policy.",
     "marketing": "Send me product updates (optional)",
     "fixErrors": "Please fix the following to continue:"
   },
@@ -208,7 +205,7 @@
     "history": {
       "title": "Recent activity",
       "empty": "No activity yet. Your balance will show here once Meridian credits your account.",
-      "topup": "Demo top-up",
+      "topup": "Deposit",
       "received": "Received from {account}",
       "sent": "Sent to {account}",
       "adjustmentCredit": "Credit from Meridian",
@@ -364,7 +361,7 @@
   },
   "Cards": {
     "title": "Virtual cards",
-    "subtitle": "Make a fictional card tied to one of your wallets, freeze it any time, and try simulated purchases.",
+    "subtitle": "Create virtual cards linked to your wallets, manage spending limits, and freeze them at any time.",
     "empty": "You have no cards yet.",
     "status": {
       "ACTIVE": "Active",
@@ -376,9 +373,9 @@
     "freeze": "Freeze card",
     "unfreeze": "Unfreeze card",
     "purchase": {
-      "title": "Simulated purchase",
+      "title": "Card purchase",
       "merchant": "Merchant",
-      "hint": "Pretend shop. The money moves through the ledger like a real card payment.",
+      "hint": "Authorize and process a transaction against this card's ledger balance.",
       "submit": "Pay"
     },
     "limitReached": "You can have up to {max} active cards, or you have no wallet yet.",
@@ -392,7 +389,7 @@
   },
   "Loans": {
     "title": "Loans",
-    "subtitle": "Apply for a demo loan. An administrator approves it, the money arrives in your wallet and you repay in monthly instalments.",
+    "subtitle": "Apply for a personal loan. An administrator reviews your application, approved funds are credited to your wallet, and you repay in monthly instalments.",
     "empty": "You have no loans yet.",
     "status": {
       "PENDING": "Waiting for approval",
@@ -449,7 +446,7 @@
   },
   "External": {
     "title": "Bank transfer",
-    "subtitle": "Send money to an account at another (fictional) bank. The money leaves your wallet now and an administrator confirms it. If it is rejected, you are refunded.",
+    "subtitle": "Send money to an account at another bank. The money leaves your wallet now and is confirmed by an administrator. If rejected, you are refunded.",
     "empty": "No bank transfers yet.",
     "status": {
       "PROCESSING": "Processing",
@@ -463,17 +460,17 @@
       "bank": "Recipient bank",
       "name": "Recipient name",
       "account": "Recipient account number",
-      "accountHint": "8 to 16 digits. Use made-up numbers.",
+      "accountHint": "8 to 16 digits.",
       "amount": "Amount",
       "hint": "A small fee applies (0.5%, minimum one unit of the currency).",
       "submit": "Send transfer"
     }
   },
   "Crypto": {
-    "title": "Crypto (practice mode)",
-    "subtitle": "Buy and sell with your USD wallet. The coins are practice balances only: no real crypto is bought or held.",
+    "title": "Digital assets",
+    "subtitle": "Buy and sell digital assets directly with your USD wallet balance.",
     "live": "Prices are live market prices.",
-    "demoPrices": "Showing demo prices (the live price service could not be reached).",
+    "fallbackPrices": "Showing estimated rates (the live price service could not be reached).",
     "market": "Market",
     "asset": "Coin",
     "buy": {

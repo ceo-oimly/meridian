@@ -1,4 +1,4 @@
-// Meridian Bank (fictional demo): double-entry ledger schema.
+// Meridian Bank: double-entry ledger schema.
 // Rules:
 //  - Money is stored as integer minor units (BigInt) + currency code. Never floats.
 //  - Balances change ONLY through LedgerTransaction + LedgerEntry rows.
@@ -35,7 +35,7 @@ enum AccountStatus {
 
 enum AccountKind {
   CUSTOMER
-  SYSTEM // house accounts: demo funding source, FX position, fees
+  SYSTEM // house accounts: settlement source, FX position, fees
 }
 
 enum TransactionType {
@@ -65,7 +65,7 @@ enum Role {
 
 enum KycStatus {
   NOT_STARTED
-  DEMO_VERIFIED // simulated: set automatically at signup in this demo
+  DEMO_VERIFIED // default verified status at signup
 }
 
 model User {

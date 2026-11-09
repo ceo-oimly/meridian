@@ -329,7 +329,7 @@ export default function SignupForm({ action }: Props) {
           </Field>
         </fieldset>
 
-        {/* Step 5: Demo verification + consent */}
+        {/* Step 5: Verification + consent */}
         <fieldset data-step={4} hidden={hide(4)} className="space-y-5">
           <legend className="mb-4 font-display text-xl font-semibold">{t("headings.verify")}</legend>
           <p className="rounded-lg border border-accent/60 bg-accent/10 p-3 text-sm text-ink">{t("kycNotice")}</p>

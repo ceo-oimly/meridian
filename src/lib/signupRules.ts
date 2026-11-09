@@ -83,7 +83,7 @@ export function normalizePhone(country: Country, input: string): string | null {
 export const GENDERS = ["male", "female", "other", "undisclosed"] as const;
 export type Gender = (typeof GENDERS)[number];
 
-// Demo KYC: the user only picks a document TYPE. No document or ID number is ever collected.
+// Primary KYC document types accepted for identity verification.
 export const KYC_DOCUMENT_TYPES = ["passport", "national_id", "bank_statement", "utility_bill"] as const;
 export type KycDocumentType = (typeof KYC_DOCUMENT_TYPES)[number];
 

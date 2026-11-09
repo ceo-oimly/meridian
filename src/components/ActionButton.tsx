@@ -54,7 +54,7 @@ export default function ActionButton({
       <button type="submit" disabled={pending || !key} className={cls}>{label}</button>
       {state.error && (
         <span role="alert" className="text-xs text-danger">
-          {t(`errors.${state.error}` as never, { count: state.attemptsLeft ?? 0 })}
+          {(t as (key: string, values?: Record<string, unknown>) => string)(`errors.${state.error}`, { count: state.attemptsLeft ?? 0 })}
         </span>
       )}
       {state.ok && <span role="status" className="text-xs text-brand">{t("done")}</span>}
