@@ -1,0 +1,524 @@
+{
+  "Meta": {
+    "title": "메리디언 뱅크 (데모)",
+    "description": "가상의 다중 통화 디지털 은행입니다. 포트폴리오 프로젝트이며 모든 금액은 가상입니다."
+  },
+  "Demo": {
+    "banner": "데모 전용입니다. 메리디언 뱅크는 가상의 포트폴리오 프로젝트이며 모든 금액은 가짜입니다."
+  },
+  "Nav": {
+    "features": "기능",
+    "security": "보안",
+    "login": "로그인",
+    "signup": "계좌 개설",
+    "language": "언어"
+  },
+  "Home": {
+    "eyebrow": "국경 없는 금융",
+    "title": "달러와 원화를 하나의 계좌로.",
+    "subtitle": "USD와 KRW를 즉시 보관, 송금, 환전하세요. 모든 거래는 투명한 원장에 기록됩니다.",
+    "cta": "무료 데모 계좌 개설",
+    "ctaSecondary": "로그인",
+    "features": {
+      "title": "필요한 모든 것을 한곳에서",
+      "wallets": {
+        "title": "다중 통화 지갑",
+        "body": "USD와 KRW를 나란히 보관하고, 각 통화에 맞는 소수점과 표기 방식을 사용합니다."
+      },
+      "transfers": {
+        "title": "즉시 송금",
+        "body": "계좌번호로 메리디언 사용자에게 송금하세요. 모든 송금은 중복 방지와 감사 기록이 적용됩니다."
+      },
+      "history": {
+        "title": "정직한 거래 내역",
+        "body": "모든 잔액은 복식부기 원장의 합계이며, 언제든지 내보낼 수 있습니다."
+      },
+      "control": {
+        "title": "내가 직접 관리",
+        "body": "한 번의 탭으로 계좌를 정지하고, 모든 로그인과 활동을 확인하세요."
+      }
+    },
+    "security": {
+      "title": "보안을 최우선으로",
+      "body": "Argon2 비밀번호 해싱, 2단계 인증, 엄격한 보안 헤더, 변경 불가능한 감사 로그를 적용했습니다."
+    }
+  },
+  "Auth": {
+    "loginTitle": "다시 오신 것을 환영합니다",
+    "signupTitle": "계좌 개설하기",
+    "fullName": "이름",
+    "email": "이메일",
+    "password": "비밀번호",
+    "passwordHint": "12자 이상 입력하세요.",
+    "loginSubmit": "로그인",
+    "signupSubmit": "계정 만들기",
+    "noAccount": "메리디언이 처음이신가요?",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "errors": {
+      "invalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다.",
+      "emailTaken": "이미 이 이메일로 가입된 계정이 있습니다.",
+      "generic": "문제가 발생했습니다. 다시 시도해 주세요.",
+      "tooManyAttempts": "시도 횟수가 너무 많습니다. 몇 분 뒤에 다시 시도해 주세요."
+    }
+  },
+  "Validation": {
+    "nameRequired": "이름을 입력해 주세요.",
+    "emailInvalid": "올바른 이메일 주소를 입력해 주세요.",
+    "passwordShort": "비밀번호는 12자 이상이어야 합니다.",
+    "firstNameRequired": "이름을 입력해 주세요.",
+    "lastNameRequired": "성을 입력해 주세요.",
+    "confirmMismatch": "비밀번호가 일치하지 않습니다.",
+    "passwordWeak": "더 강한 비밀번호를 사용하세요. 대소문자, 숫자, 기호를 섞어 주세요.",
+    "phoneInvalid": "올바른 전화번호를 입력해 주세요.",
+    "dobInvalid": "올바른 생년월일을 입력해 주세요.",
+    "underAge": "만 18세 이상이어야 합니다.",
+    "genderInvalid": "항목을 선택해 주세요.",
+    "occupationRequired": "직업을 입력해 주세요.",
+    "countryInvalid": "국가를 선택해 주세요.",
+    "cityRequired": "도시를 입력해 주세요.",
+    "postalInvalid": "5자리 우편번호를 입력해 주세요. 예: 06236",
+    "addressRequired": "주소를 입력해 주세요.",
+    "nokNameRequired": "비상연락인의 이름을 입력해 주세요.",
+    "nokEmailInvalid": "올바른 이메일을 입력하거나 비워 두세요.",
+    "nokPhoneInvalid": "비상연락인의 올바른 전화번호를 입력해 주세요.",
+    "nokRelationshipRequired": "관계를 입력해 주세요.",
+    "nokAddressRequired": "비상연락인의 주소를 입력해 주세요.",
+    "currencyInvalid": "통화를 선택해 주세요.",
+    "pinInvalid": "4~6자리 숫자를 사용하고 0000이나 1234 같은 반복·연속 숫자는 피하세요.",
+    "kycDocumentInvalid": "문서 종류를 선택해 주세요.",
+    "kycAckRequired": "데모임을 이해했음을 확인해 주세요.",
+    "termsRequired": "계속하려면 약관에 동의해야 합니다."
+  },
+  "Dashboard": {
+    "title": "내 계좌",
+    "comingSoon": "지갑과 거래 내역은 다음 단계에서 제공됩니다."
+  },
+  "Footer": {
+    "note": "© 메리디언 뱅크. 포트폴리오용 가상 프로젝트입니다."
+  },
+  "Signup": {
+    "subtitle": "약 3분 소요됩니다. 데모이므로 실제 개인정보가 아닌 임의의 정보를 입력해 주세요.",
+    "stepOf": "{total}단계 중 {current}단계",
+    "back": "이전",
+    "next": "계속",
+    "select": "선택",
+    "optional": "(선택)",
+    "steps": {
+      "personal": "개인정보",
+      "contact": "연락처",
+      "kin": "비상연락인",
+      "account": "계좌",
+      "verify": "인증"
+    },
+    "headings": {
+      "personal": "개인 정보",
+      "contact": "연락처 정보",
+      "kin": "비상연락인 정보",
+      "account": "계좌 정보",
+      "verify": "본인 확인"
+    },
+    "fields": {
+      "firstName": "이름",
+      "lastName": "성",
+      "phone": "휴대전화",
+      "dateOfBirth": "생년월일",
+      "gender": "성별",
+      "occupation": "직업",
+      "country": "국가",
+      "city": "도시",
+      "regionUS": "주(State)",
+      "regionKR": "도 / 광역시",
+      "postalCodeUS": "우편번호 (ZIP)",
+      "postalCodeKR": "우편번호",
+      "address": "주소",
+      "nokName": "이름",
+      "nokPhone": "전화번호",
+      "nokRelationship": "관계",
+      "nokAddress": "주소",
+      "preferredCurrency": "계좌 통화",
+      "confirmPassword": "비밀번호 확인",
+      "pin": "거래 PIN",
+      "kycDocumentType": "신분 확인 수단 (문서 종류)"
+    },
+    "hints": {
+      "dateOfBirth": "만 18세 이상이어야 합니다.",
+      "phoneUS": "예: (415) 555-0132, 또는 +234 803 674 1906처럼 국가번호를 포함하세요",
+      "phoneKR": "예: 010-1234-5678, 또는 +234 803 674 1906처럼 국가번호를 포함하세요",
+      "relationship": "예: 형제",
+      "pin": "4~6자리 숫자. 0000이나 1234는 피하세요."
+    },
+    "genders": {
+      "male": "남성",
+      "female": "여성",
+      "other": "기타",
+      "undisclosed": "밝히지 않음"
+    },
+    "countries": {
+      "US": "미국",
+      "KR": "대한민국"
+    },
+    "currencies": {
+      "USD": "미국 달러 (USD)",
+      "KRW": "대한민국 원 (KRW)"
+    },
+    "documents": {
+      "passport": "여권",
+      "national_id": "신분증",
+      "bank_statement": "은행 거래내역서",
+      "utility_bill": "공과금 고지서"
+    },
+    "strength": {
+      "label": "비밀번호 강도",
+      "levels": {
+        "0": "너무 짧음",
+        "1": "약함",
+        "2": "보통",
+        "3": "좋음",
+        "4": "강함"
+      }
+    },
+    "kycNotice": "메리디언은 데모이므로 실제 문서를 수집하지 않습니다. 평소 제출하실 문서 종류만 선택하면 데모용으로 인증 처리됩니다. 이 사이트에는 실제 신분증 번호나 세금 번호를 절대 입력하지 마세요.",
+    "kycAck": "이 서비스가 데모이며 실제 신원 또는 금융 정보를 입력하지 않았음을 이해합니다.",
+    "terms": "이용약관과 개인정보처리방침에 동의하며, 이곳의 금액이 가상임을 이해합니다.",
+    "marketing": "제품 소식 받기 (선택)",
+    "fixErrors": "계속하려면 아래 항목을 수정해 주세요:"
+  },
+  "Wallet": {
+    "wallet": "지갑",
+    "amount": "금액",
+    "accountNumber": "계좌번호",
+    "logout": "로그아웃",
+    "success": "완료되었습니다. 잔액이 업데이트되었습니다.",
+    "status": {
+      "ACTIVE": "정상",
+      "FROZEN": "동결",
+      "SUSPENDED": "정지",
+      "DORMANT": "휴면",
+      "CLOSED": "해지"
+    },
+    "transfer": {
+      "title": "송금하기",
+      "from": "출금 지갑",
+      "to": "받는 분 계좌번호",
+      "toHint": "10자리 메리디언 계좌번호입니다. 두 지갑의 통화가 같아야 합니다.",
+      "memo": "메모 (선택)",
+      "pin": "거래 PIN",
+      "submit": "송금"
+    },
+    "history": {
+      "title": "최근 거래",
+      "empty": "아직 거래 내역이 없습니다. 메리디언이 계좌에 입금하면 잔액이 여기에 표시됩니다.",
+      "topup": "데모 충전",
+      "received": "{account}에서 받음",
+      "sent": "{account}(으)로 송금",
+      "adjustmentCredit": "메리디언 입금",
+      "adjustmentDebit": "메리디언 출금",
+      "fxIn": "환전 (입금)",
+      "fxOut": "환전 (출금)",
+      "card": "카드 결제",
+      "loanDisbursed": "대출금 지급",
+      "loanRepaid": "대출 상환",
+      "cryptoSell": "암호화폐 매도",
+      "cryptoBuy": "암호화폐 매수",
+      "external": "타행 송금",
+      "reversal": "환불",
+      "fee": "수수료",
+      "other": "거래"
+    },
+    "errors": {
+      "notSignedIn": "다시 로그인해 주세요.",
+      "amountInvalid": "이 통화에 맞는 올바른 금액을 입력해 주세요.",
+      "overLimit": "1회 한도를 초과했습니다.",
+      "insufficientFunds": "이 지갑의 잔액이 부족합니다.",
+      "accountRestricted": "이 계좌는 제한되어 있어 결제할 수 없습니다.",
+      "recipientInvalid": "올바른 10자리 계좌번호를 입력해 주세요.",
+      "recipientNotFound": "해당 계좌를 찾을 수 없습니다.",
+      "currencyMismatch": "받는 분의 지갑 통화가 다릅니다.",
+      "sameAccount": "같은 지갑으로는 송금할 수 없습니다.",
+      "pinNotSet": "이 계정에는 PIN이 설정되어 있지 않습니다.",
+      "pinWrong": "PIN이 올바르지 않습니다. 일시 잠금 전까지 {count}회 남았습니다.",
+      "pinLocked": "PIN을 너무 많이 틀렸습니다. 15분 동안 송금이 잠깁니다.",
+      "transferFailed": "문제가 발생했습니다. 요금은 청구되지 않았습니다. 다시 시도해 주세요.",
+      "walletExists": "이미 해당 통화의 지갑이 있습니다.",
+      "sameCurrency": "서로 다른 두 통화를 선택해 주세요.",
+      "needTargetWallet": "먼저 상대 통화의 지갑을 만들어 주세요.",
+      "amountTooSmall": "환전하거나 거래하기에는 금액이 너무 작습니다.",
+      "tooManyCards": "카드 발급 한도에 도달했습니다.",
+      "cardBlockedByBank": "이 카드는 메리디언에서 차단했으며 변경할 수 없습니다.",
+      "cardBlocked": "차단된 카드입니다.",
+      "cardFrozen": "이 카드는 정지 상태입니다. 먼저 정지를 해제해 주세요.",
+      "cardExpired": "만료된 카드입니다.",
+      "overTxLimit": "카드의 1회 결제 한도를 초과했습니다.",
+      "overMonthlyLimit": "카드의 월 한도를 초과합니다.",
+      "merchantRequired": "가맹점 이름을 입력해 주세요.",
+      "purposeRequired": "대출 목적을 입력해 주세요.",
+      "loanTermInvalid": "사용 가능한 기간 중에서 선택해 주세요.",
+      "loanExists": "이미 심사 중이거나 진행 중인 대출이 있습니다.",
+      "alreadyPaid": "이 대출은 더 이상 갚을 금액이 없습니다.",
+      "alreadyDecided": "이미 처리된 건입니다. 페이지를 새로고침해 주세요.",
+      "payerNotFound": "해당 이메일의 고객을 찾을 수 없습니다.",
+      "payerNoWallet": "이 요청을 결제하려면 해당 통화의 지갑이 필요합니다.",
+      "bankInvalid": "목록에서 은행을 선택해 주세요.",
+      "externalAccountInvalid": "받는 분의 계좌번호를 입력해 주세요 (8~16자리 숫자).",
+      "recipientNameRequired": "받는 분의 이름을 입력해 주세요.",
+      "needUsdWallet": "암호화폐 거래는 USD 지갑을 사용합니다. 먼저 환전 페이지에서 USD 지갑을 만들어 주세요.",
+      "insufficientHoldings": "해당 코인을 그만큼 보유하고 있지 않습니다."
+    },
+    "adminLink": "관리자 패널",
+    "done": "완료되었습니다.",
+    "downloadStatement": "거래내역서 다운로드 (CSV)"
+  },
+  "Admin": {
+    "title": "관리자 패널",
+    "subtitle": "관리자만 잔액을 조정하거나 계좌 상태를 변경할 수 있습니다. 모든 작업에는 사유가 필요하며 감사 로그에 기록됩니다.",
+    "back": "대시보드로 돌아가기",
+    "searchLabel": "고객 검색",
+    "searchPlaceholder": "이름, 이메일 또는 계좌번호",
+    "search": "검색",
+    "noResults": "고객을 찾을 수 없습니다.",
+    "roles": {
+      "USER": "고객",
+      "ADMIN": "관리자"
+    },
+    "selfNote": "본인 계좌는 변경할 수 없습니다. 다른 관리자에게 요청하세요.",
+    "success": "저장되었습니다.",
+    "adjust": {
+      "title": "잔액 조정",
+      "direction": "작업",
+      "credit": "입금 (금액 추가)",
+      "debit": "출금 (금액 차감)",
+      "amount": "금액",
+      "reason": "사유 (필수)",
+      "reasonHint": "고객의 거래 내역에 표시되며 감사 로그에 저장됩니다.",
+      "submit": "조정 등록"
+    },
+    "status": {
+      "title": "계좌 상태",
+      "label": "상태",
+      "reason": "사유 (필수)",
+      "submit": "상태 변경"
+    },
+    "activity": {
+      "title": "최근 관리자 활동",
+      "empty": "아직 관리자 활동이 없습니다.",
+      "adjust": "잔액 조정",
+      "status": "상태 변경",
+      "by": "{email}"
+    },
+    "errors": {
+      "forbidden": "관리자만 이 작업을 수행할 수 있습니다.",
+      "invalidRequest": "올바르지 않은 요청입니다. 페이지를 새로고침한 후 다시 시도해 주세요.",
+      "selfAction": "본인 계좌는 변경할 수 없습니다.",
+      "amountInvalid": "이 통화에 맞는 올바른 금액을 입력해 주세요.",
+      "overLimit": "관리자 한도를 초과했습니다.",
+      "reasonRequired": "사유를 입력해 주세요 (3~200자).",
+      "noChange": "계좌가 이미 해당 상태입니다.",
+      "closeNeedsZero": "잔액이 0일 때만 계좌를 해지할 수 있습니다.",
+      "insufficientFunds": "출금하기에 지갑 잔액이 부족합니다.",
+      "accountRestricted": "계좌가 정상 상태가 아닙니다. 먼저 정상으로 변경한 후 잔액을 조정하세요.",
+      "transferFailed": "문제가 발생했습니다. 변경된 내용이 없습니다. 다시 시도해 주세요.",
+      "alreadyDecided": "이미 처리된 건입니다. 페이지를 새로고침해 주세요.",
+      "walletExists": "이미 존재합니다.",
+      "insufficientHoldings": "보유 수량이 부족합니다."
+    },
+    "done": "완료되었습니다."
+  },
+  "App": {
+    "nav": {
+      "dashboard": "지갑",
+      "convert": "환전",
+      "cards": "카드",
+      "loans": "대출",
+      "requests": "송금 요청",
+      "external": "타행 송금",
+      "crypto": "암호화폐",
+      "admin": "관리자",
+      "queue": "승인 대기",
+      "logout": "로그아웃"
+    }
+  },
+  "Convert": {
+    "title": "지갑 및 환전",
+    "subtitle": "최대 8개 통화로 돈을 보관하고, 내 지갑끼리 환전할 수 있습니다. 환율에는 메리디언 수수료 {spread}%가 반영됩니다.",
+    "needTwo": "통화 간 환전을 하려면 지갑을 하나 더 만들어 주세요.",
+    "allOpen": "지원하는 모든 통화의 지갑을 보유하고 있습니다.",
+    "form": {
+      "title": "환전하기",
+      "from": "출금 지갑",
+      "to": "입금 지갑",
+      "amount": "환전할 금액",
+      "hint": "이 페이지에 표시된 환율이 오늘의 환율입니다. 지갑에서 바로 출금되고 환전 금액이 즉시 입금됩니다.",
+      "submit": "환전"
+    },
+    "open": {
+      "title": "지갑 추가 개설",
+      "currency": "통화",
+      "hint": "지갑마다 고유한 계좌번호가 있으며 잔액은 0에서 시작합니다.",
+      "submit": "지갑 만들기"
+    },
+    "rates": {
+      "title": "오늘의 고객 환율",
+      "live": "실시간 시장 환율에서 메리디언 수수료를 뺀 환율입니다.",
+      "fallback": "대략적인 환율입니다 (실시간 환율 서비스에 연결하지 못했습니다)."
+    }
+  },
+  "Cards": {
+    "title": "가상 카드",
+    "subtitle": "내 지갑에 연결된 가상 카드를 만들고, 언제든 정지하거나 모의 결제를 해 볼 수 있습니다.",
+    "empty": "아직 카드가 없습니다.",
+    "status": {
+      "ACTIVE": "사용 중",
+      "FROZEN": "정지됨",
+      "BLOCKED": "메리디언에서 차단"
+    },
+    "perTx": "1회 결제 한도",
+    "monthly": "이번 달 사용액 / 한도",
+    "freeze": "카드 정지",
+    "unfreeze": "정지 해제",
+    "purchase": {
+      "title": "모의 결제",
+      "merchant": "가맹점",
+      "hint": "가상의 가게입니다. 실제 카드 결제처럼 원장을 통해 돈이 이동합니다.",
+      "submit": "결제"
+    },
+    "limitReached": "카드는 최대 {max}장까지 사용할 수 있거나, 아직 지갑이 없습니다.",
+    "create": {
+      "title": "카드 만들기",
+      "wallet": "지갑",
+      "hint": "이 지갑의 잔액으로 결제됩니다.",
+      "submit": "카드 만들기",
+      "shownOnce": "지금 이 정보를 복사해 두세요. 보안을 위해 끝 4자리만 저장됩니다."
+    }
+  },
+  "Loans": {
+    "title": "대출",
+    "subtitle": "데모 대출을 신청하세요. 관리자가 승인하면 지갑으로 입금되고, 매달 나누어 상환합니다.",
+    "empty": "아직 대출이 없습니다.",
+    "status": {
+      "PENDING": "승인 대기",
+      "ACTIVE": "진행 중",
+      "REJECTED": "거절됨",
+      "PAID": "상환 완료"
+    },
+    "meta": "연 {apr}% · {months}개월",
+    "note": "메모",
+    "progress": "{total}회 중 {paid}회 상환",
+    "paid": "납부 완료",
+    "repay": {
+      "title": "다음 회차 상환 ({amount})",
+      "submit": "지금 상환"
+    },
+    "oneAtATime": "심사 중이거나 진행 중인 대출은 한 번에 하나만 가질 수 있습니다.",
+    "apply": {
+      "title": "대출 신청",
+      "wallet": "입금받을 지갑",
+      "amount": "금액",
+      "term": "상환 기간",
+      "termOption": "{months}개월 (연 {apr}%)",
+      "purpose": "대출 목적",
+      "hint": "기간이 길수록 금리가 높습니다. 최대 금액은 통화별로 다릅니다.",
+      "submit": "신청"
+    }
+  },
+  "Requests": {
+    "title": "송금 요청",
+    "subtitle": "다른 메리디언 고객에게 돈을 요청하거나, 나에게 온 요청을 결제 또는 거절할 수 있습니다.",
+    "incoming": "내가 받은 요청",
+    "outgoing": "내가 보낸 요청",
+    "noneIncoming": "나에게 돈을 요청한 사람이 없습니다.",
+    "noneOutgoing": "아직 돈을 요청하지 않았습니다.",
+    "from": "{name}님이 요청",
+    "to": "{name}님에게 요청",
+    "status": {
+      "PENDING": "대기 중",
+      "PAID": "결제됨",
+      "DECLINED": "거절됨",
+      "CANCELLED": "취소됨"
+    },
+    "pay": "결제",
+    "decline": "거절",
+    "cancel": "요청 취소",
+    "create": {
+      "title": "돈 요청하기",
+      "wallet": "입금받을 지갑",
+      "email": "상대방 이메일",
+      "amount": "금액",
+      "note": "메모 (선택)",
+      "submit": "요청 보내기"
+    }
+  },
+  "External": {
+    "title": "타행 송금",
+    "subtitle": "다른 (가상의) 은행 계좌로 송금합니다. 돈은 지금 지갑에서 출금되고 관리자가 확인합니다. 거절되면 환불됩니다.",
+    "empty": "아직 타행 송금 내역이 없습니다.",
+    "status": {
+      "PROCESSING": "처리 중",
+      "COMPLETED": "완료",
+      "REJECTED": "거절 및 환불됨"
+    },
+    "fee": "수수료",
+    "form": {
+      "title": "새 타행 송금",
+      "wallet": "출금 지갑",
+      "bank": "받는 은행",
+      "name": "받는 분 이름",
+      "account": "받는 분 계좌번호",
+      "accountHint": "8~16자리 숫자입니다. 가상의 번호를 사용하세요.",
+      "amount": "금액",
+      "hint": "소액의 수수료가 부과됩니다 (0.5%, 최소 해당 통화 1단위).",
+      "submit": "송금하기"
+    }
+  },
+  "Crypto": {
+    "title": "암호화폐 (연습 모드)",
+    "subtitle": "USD 지갑으로 사고팝니다. 코인은 연습용 잔액일 뿐이며 실제 암호화폐를 사거나 보관하지 않습니다.",
+    "live": "실시간 시장 가격입니다.",
+    "demoPrices": "데모 가격을 표시 중입니다 (실시간 가격 서비스에 연결하지 못했습니다).",
+    "market": "시세",
+    "asset": "코인",
+    "buy": {
+      "title": "매수",
+      "amount": "USD 금액",
+      "hint": "코인 수량은 소수점 8자리에서 내림됩니다.",
+      "submit": "매수"
+    },
+    "sell": {
+      "title": "매도",
+      "quantity": "코인 수량",
+      "hint": "예: 0.002",
+      "submit": "매도"
+    },
+    "holdings": "보유 코인",
+    "noHoldings": "아직 보유한 코인이 없습니다."
+  },
+  "Queue": {
+    "title": "승인 대기",
+    "subtitle": "관리자의 처리가 필요한 대출 신청, 타행 송금, 카드입니다.",
+    "loans": "대출 신청",
+    "noneLoans": "대기 중인 대출이 없습니다.",
+    "loanMeta": "연 {apr}%, {months}개월",
+    "approve": "승인 및 지급",
+    "reject": "거절",
+    "reason": "사유 (필수)",
+    "transfers": "처리 중인 타행 송금",
+    "noneTransfers": "대기 중인 송금이 없습니다.",
+    "feeLine": "수수료 {fee}",
+    "complete": "완료 처리",
+    "rejectRefund": "거절 및 환불",
+    "cards": "카드",
+    "noneCards": "아직 카드가 없습니다.",
+    "cardStatus": {
+      "ACTIVE": "사용 중",
+      "FROZEN": "고객이 정지함",
+      "BLOCKED": "차단됨"
+    },
+    "block": "카드 차단",
+    "unblock": "차단 해제",
+    "dormancy": {
+      "title": "휴면 계좌",
+      "submit": "휴면 점검 실행",
+      "result": "휴면으로 전환된 지갑:",
+      "hint": "180일 동안 거래가 없는 지갑은 휴면 상태가 됩니다. 고객이 다시 로그인하면 자동으로 복구됩니다."
+    }
+  }
+}

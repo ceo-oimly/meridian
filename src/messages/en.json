@@ -1,0 +1,524 @@
+{
+  "Meta": {
+    "title": "Meridian Bank (demo)",
+    "description": "A fictional multi-currency digital bank. Portfolio project, demo money only."
+  },
+  "Demo": {
+    "banner": "Demo only. Meridian Bank is a fictional portfolio project. All money is fake."
+  },
+  "Nav": {
+    "features": "Features",
+    "security": "Security",
+    "login": "Log in",
+    "signup": "Open account",
+    "language": "Language"
+  },
+  "Home": {
+    "eyebrow": "Banking without borders",
+    "title": "One account for dollars and won.",
+    "subtitle": "Hold, send and convert USD and KRW instantly, with a clear ledger behind every cent.",
+    "cta": "Open a free demo account",
+    "ctaSecondary": "Log in",
+    "features": {
+      "title": "Everything in one place",
+      "wallets": {
+        "title": "Multi-currency wallets",
+        "body": "Hold USD and KRW side by side with correct decimals and formatting for each."
+      },
+      "transfers": {
+        "title": "Instant transfers",
+        "body": "Send money to anyone on Meridian by account number. Every transfer is idempotent and audited."
+      },
+      "history": {
+        "title": "Honest transaction history",
+        "body": "Every balance is the sum of a double-entry ledger, exportable any time."
+      },
+      "control": {
+        "title": "You stay in control",
+        "body": "Freeze your account in one tap and review every sign-in and action."
+      }
+    },
+    "security": {
+      "title": "Built with security first",
+      "body": "Argon2 password hashing, two-factor authentication, strict security headers and an append-only audit log."
+    }
+  },
+  "Auth": {
+    "loginTitle": "Welcome back",
+    "signupTitle": "Open your account",
+    "fullName": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 12 characters.",
+    "loginSubmit": "Log in",
+    "signupSubmit": "Create account",
+    "noAccount": "New to Meridian?",
+    "haveAccount": "Already have an account?",
+    "errors": {
+      "invalidCredentials": "Email or password is incorrect.",
+      "emailTaken": "An account with this email already exists.",
+      "generic": "Something went wrong. Please try again.",
+      "tooManyAttempts": "Too many attempts. Please wait a few minutes and try again."
+    }
+  },
+  "Validation": {
+    "nameRequired": "Please enter your full name.",
+    "emailInvalid": "Please enter a valid email address.",
+    "passwordShort": "Password must be at least 12 characters.",
+    "firstNameRequired": "Please enter your first name.",
+    "lastNameRequired": "Please enter your last name.",
+    "confirmMismatch": "Passwords do not match.",
+    "passwordWeak": "Choose a stronger password: mix upper and lower case, numbers or symbols.",
+    "phoneInvalid": "Enter a valid phone number.",
+    "dobInvalid": "Enter a valid date of birth.",
+    "underAge": "You must be at least 18 years old.",
+    "genderInvalid": "Please select an option.",
+    "occupationRequired": "Please enter your occupation.",
+    "countryInvalid": "Please select a country.",
+    "cityRequired": "Please enter your city.",
+    "postalInvalid": "Enter a 5-digit ZIP / postal code, for example 94105.",
+    "addressRequired": "Please enter your address.",
+    "nokNameRequired": "Please enter your next of kin's name.",
+    "nokEmailInvalid": "Enter a valid email address or leave it blank.",
+    "nokPhoneInvalid": "Enter a valid phone number for your next of kin.",
+    "nokRelationshipRequired": "Please enter the relationship.",
+    "nokAddressRequired": "Please enter your next of kin's address.",
+    "currencyInvalid": "Please select a currency.",
+    "pinInvalid": "Use 4 to 6 digits and avoid repeats or sequences like 0000 or 1234.",
+    "kycDocumentInvalid": "Please select a document type.",
+    "kycAckRequired": "Please confirm that you understand this is a demo.",
+    "termsRequired": "You must accept the terms to continue."
+  },
+  "Dashboard": {
+    "title": "Your accounts",
+    "comingSoon": "Wallets and transactions arrive in the next phase."
+  },
+  "Footer": {
+    "note": "© Meridian Bank. Fictional project for portfolio purposes."
+  },
+  "Signup": {
+    "subtitle": "About 3 minutes. This is a demo, so please use made-up details, not real personal information.",
+    "stepOf": "Step {current} of {total}",
+    "back": "Back",
+    "next": "Continue",
+    "select": "Select",
+    "optional": "(optional)",
+    "steps": {
+      "personal": "Personal",
+      "contact": "Contact",
+      "kin": "Next of kin",
+      "account": "Account",
+      "verify": "Verify"
+    },
+    "headings": {
+      "personal": "Personal information",
+      "contact": "Contact information",
+      "kin": "Next of kin information",
+      "account": "Account information",
+      "verify": "Verification"
+    },
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phone": "Phone",
+      "dateOfBirth": "Date of birth",
+      "gender": "Gender",
+      "occupation": "Occupation",
+      "country": "Country",
+      "city": "City",
+      "regionUS": "State",
+      "regionKR": "Province / metropolitan city",
+      "postalCodeUS": "ZIP code",
+      "postalCodeKR": "Postal code",
+      "address": "Address",
+      "nokName": "Name",
+      "nokPhone": "Phone",
+      "nokRelationship": "Relationship",
+      "nokAddress": "Address",
+      "preferredCurrency": "Account currency",
+      "confirmPassword": "Repeat password",
+      "pin": "Transaction PIN",
+      "kycDocumentType": "Means of identification (document type)"
+    },
+    "hints": {
+      "dateOfBirth": "You must be 18 or older.",
+      "phoneUS": "For example (415) 555-0132, or include a country code like +234 803 674 1906",
+      "phoneKR": "For example 010-1234-5678, or include a country code like +234 803 674 1906",
+      "relationship": "e.g. Brother",
+      "pin": "4 to 6 digits. Avoid 0000 or 1234."
+    },
+    "genders": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "undisclosed": "Prefer not to say"
+    },
+    "countries": {
+      "US": "United States",
+      "KR": "South Korea"
+    },
+    "currencies": {
+      "USD": "US dollar (USD)",
+      "KRW": "Korean won (KRW)"
+    },
+    "documents": {
+      "passport": "Passport ID",
+      "national_id": "National ID",
+      "bank_statement": "Bank statement",
+      "utility_bill": "Utility bill"
+    },
+    "strength": {
+      "label": "Password strength",
+      "levels": {
+        "0": "Too short",
+        "1": "Weak",
+        "2": "Fair",
+        "3": "Good",
+        "4": "Strong"
+      }
+    },
+    "kycNotice": "Meridian is a demo, so no real documents are collected. Choose the document type you would normally provide and we will mark it as verified for the demo. Never enter real ID or tax numbers on this site.",
+    "kycAck": "I understand this is a demo and I have not entered real identity or financial details.",
+    "terms": "I agree to the Terms of Use and Privacy Policy, and I understand the money here is fake.",
+    "marketing": "Send me product updates (optional)",
+    "fixErrors": "Please fix the following to continue:"
+  },
+  "Wallet": {
+    "wallet": "Wallet",
+    "amount": "Amount",
+    "accountNumber": "Account number",
+    "logout": "Log out",
+    "success": "Done. Your balance has been updated.",
+    "status": {
+      "ACTIVE": "Active",
+      "FROZEN": "Frozen",
+      "SUSPENDED": "Suspended",
+      "DORMANT": "Dormant",
+      "CLOSED": "Closed"
+    },
+    "transfer": {
+      "title": "Send money",
+      "from": "From wallet",
+      "to": "Recipient account number",
+      "toHint": "10-digit Meridian account number. Both wallets must use the same currency.",
+      "memo": "Note (optional)",
+      "pin": "Transaction PIN",
+      "submit": "Send"
+    },
+    "history": {
+      "title": "Recent activity",
+      "empty": "No activity yet. Your balance will show here once Meridian credits your account.",
+      "topup": "Demo top-up",
+      "received": "Received from {account}",
+      "sent": "Sent to {account}",
+      "adjustmentCredit": "Credit from Meridian",
+      "adjustmentDebit": "Debit by Meridian",
+      "fxIn": "Currency conversion (in)",
+      "fxOut": "Currency conversion (out)",
+      "card": "Card purchase",
+      "loanDisbursed": "Loan paid out",
+      "loanRepaid": "Loan repayment",
+      "cryptoSell": "Crypto sold",
+      "cryptoBuy": "Crypto bought",
+      "external": "Bank transfer",
+      "reversal": "Refund",
+      "fee": "Fee",
+      "other": "Transaction"
+    },
+    "errors": {
+      "notSignedIn": "Please log in again.",
+      "amountInvalid": "Enter a valid amount for this currency.",
+      "overLimit": "That amount is above the limit for a single action.",
+      "insufficientFunds": "Not enough balance in this wallet.",
+      "accountRestricted": "This account is restricted and cannot make this payment.",
+      "recipientInvalid": "Enter a valid 10-digit account number.",
+      "recipientNotFound": "We could not find that account.",
+      "currencyMismatch": "The recipient's wallet uses a different currency.",
+      "sameAccount": "You cannot send money to the same wallet.",
+      "pinNotSet": "No PIN is set on this account.",
+      "pinWrong": "Incorrect PIN. {count} attempts left before a temporary lock.",
+      "pinLocked": "Too many wrong PINs. Transfers are locked for 15 minutes.",
+      "transferFailed": "Something went wrong. Nothing was charged. Please try again.",
+      "walletExists": "You already have a wallet in that currency.",
+      "sameCurrency": "Choose two different currencies.",
+      "needTargetWallet": "Open a wallet in the other currency first.",
+      "amountTooSmall": "That amount is too small to convert or trade.",
+      "tooManyCards": "You have reached the card limit.",
+      "cardBlockedByBank": "This card was blocked by Meridian and cannot be changed.",
+      "cardBlocked": "This card is blocked.",
+      "cardFrozen": "This card is frozen. Unfreeze it first.",
+      "cardExpired": "This card has expired.",
+      "overTxLimit": "That is above this card's single-purchase limit.",
+      "overMonthlyLimit": "That would go over this card's monthly limit.",
+      "merchantRequired": "Enter a merchant name.",
+      "purposeRequired": "Tell us what the loan is for.",
+      "loanTermInvalid": "Choose one of the available terms.",
+      "loanExists": "You already have a loan that is pending or active.",
+      "alreadyPaid": "There is nothing left to pay on this loan.",
+      "alreadyDecided": "This was already handled. Refresh the page.",
+      "payerNotFound": "We could not find a customer with that email.",
+      "payerNoWallet": "You need a wallet in that currency to pay this request.",
+      "bankInvalid": "Choose a bank from the list.",
+      "externalAccountInvalid": "Enter the recipient's account number (8 to 16 digits).",
+      "recipientNameRequired": "Enter the recipient's name.",
+      "needUsdWallet": "Crypto trades use your USD wallet. Open one on the Convert page first.",
+      "insufficientHoldings": "You do not hold that much of this coin."
+    },
+    "adminLink": "Admin panel",
+    "done": "Done.",
+    "downloadStatement": "Download statement (CSV)"
+  },
+  "Admin": {
+    "title": "Admin panel",
+    "subtitle": "Only administrators can adjust balances or change account status. Every action needs a reason and is recorded in the audit log.",
+    "back": "Back to dashboard",
+    "searchLabel": "Search customers",
+    "searchPlaceholder": "Name, email or account number",
+    "search": "Search",
+    "noResults": "No customers found.",
+    "roles": {
+      "USER": "Customer",
+      "ADMIN": "Admin"
+    },
+    "selfNote": "You cannot change your own account. Ask another administrator.",
+    "success": "Saved.",
+    "adjust": {
+      "title": "Adjust balance",
+      "direction": "Action",
+      "credit": "Credit (add money)",
+      "debit": "Debit (remove money)",
+      "amount": "Amount",
+      "reason": "Reason (required)",
+      "reasonHint": "Shown on the customer's history and saved in the audit log.",
+      "submit": "Post adjustment"
+    },
+    "status": {
+      "title": "Account status",
+      "label": "Status",
+      "reason": "Reason (required)",
+      "submit": "Update status"
+    },
+    "activity": {
+      "title": "Recent admin activity",
+      "empty": "No admin activity yet.",
+      "adjust": "Balance adjustment",
+      "status": "Status change",
+      "by": "by {email}"
+    },
+    "errors": {
+      "forbidden": "Only administrators can do this.",
+      "invalidRequest": "That request was not valid. Refresh the page and try again.",
+      "selfAction": "You cannot change your own account.",
+      "amountInvalid": "Enter a valid amount for this currency.",
+      "overLimit": "That amount is above the admin limit.",
+      "reasonRequired": "Enter a reason (3 to 200 characters).",
+      "noChange": "The account already has that status.",
+      "closeNeedsZero": "An account can only be closed when its balance is zero.",
+      "insufficientFunds": "The wallet does not have enough balance for this debit.",
+      "accountRestricted": "The account is not active. Set it to Active first, then adjust the balance.",
+      "transferFailed": "Something went wrong. Nothing was changed. Please try again.",
+      "alreadyDecided": "This was already handled. Refresh the page.",
+      "walletExists": "Already exists.",
+      "insufficientHoldings": "Not enough holdings."
+    },
+    "done": "Done."
+  },
+  "App": {
+    "nav": {
+      "dashboard": "Wallets",
+      "convert": "Convert",
+      "cards": "Cards",
+      "loans": "Loans",
+      "requests": "Requests",
+      "external": "Bank transfer",
+      "crypto": "Crypto",
+      "admin": "Admin",
+      "queue": "Approvals",
+      "logout": "Log out"
+    }
+  },
+  "Convert": {
+    "title": "Wallets and currency conversion",
+    "subtitle": "Hold money in up to 8 currencies and convert between your own wallets. Meridian keeps a {spread}% margin on the exchange rate.",
+    "needTwo": "Open a second wallet to convert between currencies.",
+    "allOpen": "You have a wallet in every supported currency.",
+    "form": {
+      "title": "Convert money",
+      "from": "From wallet",
+      "to": "To wallet",
+      "amount": "Amount to convert",
+      "hint": "The rate shown on this page is today's rate. Your wallet is charged immediately and the converted amount is credited at once.",
+      "submit": "Convert"
+    },
+    "open": {
+      "title": "Open another wallet",
+      "currency": "Currency",
+      "hint": "Each wallet has its own account number. It starts at zero.",
+      "submit": "Open wallet"
+    },
+    "rates": {
+      "title": "Today's customer rates",
+      "live": "Live market rate minus Meridian's margin.",
+      "fallback": "Approximate rates (the live rate service could not be reached)."
+    }
+  },
+  "Cards": {
+    "title": "Virtual cards",
+    "subtitle": "Make a fictional card tied to one of your wallets, freeze it any time, and try simulated purchases.",
+    "empty": "You have no cards yet.",
+    "status": {
+      "ACTIVE": "Active",
+      "FROZEN": "Frozen",
+      "BLOCKED": "Blocked by Meridian"
+    },
+    "perTx": "Per purchase limit",
+    "monthly": "Spent this month / limit",
+    "freeze": "Freeze card",
+    "unfreeze": "Unfreeze card",
+    "purchase": {
+      "title": "Simulated purchase",
+      "merchant": "Merchant",
+      "hint": "Pretend shop. The money moves through the ledger like a real card payment.",
+      "submit": "Pay"
+    },
+    "limitReached": "You can have up to {max} active cards, or you have no wallet yet.",
+    "create": {
+      "title": "Create a card",
+      "wallet": "Wallet",
+      "hint": "The card uses this wallet's balance.",
+      "submit": "Create card",
+      "shownOnce": "Copy these details now. For safety, only the last 4 digits are kept."
+    }
+  },
+  "Loans": {
+    "title": "Loans",
+    "subtitle": "Apply for a demo loan. An administrator approves it, the money arrives in your wallet and you repay in monthly instalments.",
+    "empty": "You have no loans yet.",
+    "status": {
+      "PENDING": "Waiting for approval",
+      "ACTIVE": "Active",
+      "REJECTED": "Rejected",
+      "PAID": "Paid off"
+    },
+    "meta": "{apr}% APR over {months} months",
+    "note": "Note",
+    "progress": "{paid} of {total} instalments paid",
+    "paid": "paid",
+    "repay": {
+      "title": "Pay next instalment ({amount})",
+      "submit": "Pay now"
+    },
+    "oneAtATime": "You can only have one pending or active loan at a time.",
+    "apply": {
+      "title": "Apply for a loan",
+      "wallet": "Pay out to wallet",
+      "amount": "Amount",
+      "term": "Repayment period",
+      "termOption": "{months} months ({apr}% APR)",
+      "purpose": "What is it for?",
+      "hint": "Longer terms have a higher rate. Maximum amounts depend on the currency.",
+      "submit": "Apply"
+    }
+  },
+  "Requests": {
+    "title": "Payment requests",
+    "subtitle": "Ask another Meridian customer for money, or pay and decline requests sent to you.",
+    "incoming": "Requests to you",
+    "outgoing": "Requests you sent",
+    "noneIncoming": "Nobody has requested money from you.",
+    "noneOutgoing": "You have not requested money yet.",
+    "from": "From {name}",
+    "to": "To {name}",
+    "status": {
+      "PENDING": "Waiting",
+      "PAID": "Paid",
+      "DECLINED": "Declined",
+      "CANCELLED": "Cancelled"
+    },
+    "pay": "Pay",
+    "decline": "Decline",
+    "cancel": "Cancel request",
+    "create": {
+      "title": "Request money",
+      "wallet": "Receive into",
+      "email": "Their email",
+      "amount": "Amount",
+      "note": "Note (optional)",
+      "submit": "Send request"
+    }
+  },
+  "External": {
+    "title": "Bank transfer",
+    "subtitle": "Send money to an account at another (fictional) bank. The money leaves your wallet now and an administrator confirms it. If it is rejected, you are refunded.",
+    "empty": "No bank transfers yet.",
+    "status": {
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "REJECTED": "Rejected and refunded"
+    },
+    "fee": "fee",
+    "form": {
+      "title": "New bank transfer",
+      "wallet": "From wallet",
+      "bank": "Recipient bank",
+      "name": "Recipient name",
+      "account": "Recipient account number",
+      "accountHint": "8 to 16 digits. Use made-up numbers.",
+      "amount": "Amount",
+      "hint": "A small fee applies (0.5%, minimum one unit of the currency).",
+      "submit": "Send transfer"
+    }
+  },
+  "Crypto": {
+    "title": "Crypto (practice mode)",
+    "subtitle": "Buy and sell with your USD wallet. The coins are practice balances only: no real crypto is bought or held.",
+    "live": "Prices are live market prices.",
+    "demoPrices": "Showing demo prices (the live price service could not be reached).",
+    "market": "Market",
+    "asset": "Coin",
+    "buy": {
+      "title": "Buy",
+      "amount": "Amount in USD",
+      "hint": "Coins are rounded down to 8 decimal places.",
+      "submit": "Buy"
+    },
+    "sell": {
+      "title": "Sell",
+      "quantity": "Quantity of coins",
+      "hint": "Example: 0.002",
+      "submit": "Sell"
+    },
+    "holdings": "Your coins",
+    "noHoldings": "You hold no coins yet."
+  },
+  "Queue": {
+    "title": "Approvals",
+    "subtitle": "Loan applications, bank transfers and cards that need an administrator.",
+    "loans": "Loan applications",
+    "noneLoans": "No loans are waiting.",
+    "loanMeta": "{apr}% APR, {months} months",
+    "approve": "Approve and pay out",
+    "reject": "Reject",
+    "reason": "Reason (required)",
+    "transfers": "Bank transfers in progress",
+    "noneTransfers": "No transfers are waiting.",
+    "feeLine": "fee {fee}",
+    "complete": "Mark completed",
+    "rejectRefund": "Reject and refund",
+    "cards": "Cards",
+    "noneCards": "No cards yet.",
+    "cardStatus": {
+      "ACTIVE": "Active",
+      "FROZEN": "Frozen by customer",
+      "BLOCKED": "Blocked"
+    },
+    "block": "Block card",
+    "unblock": "Unblock card",
+    "dormancy": {
+      "title": "Dormant accounts",
+      "submit": "Run inactivity check",
+      "result": "Wallets marked dormant:",
+      "hint": "Wallets with no activity for 180 days become Dormant. They reactivate when the customer signs in again."
+    }
+  }
+}

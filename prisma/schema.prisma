@@ -1,0 +1,339 @@
+// Meridian Bank (fictional demo): double-entry ledger schema.
+// Rules:
+//  - Money is stored as integer minor units (BigInt) + currency code. Never floats.
+//  - Balances change ONLY through LedgerTransaction + LedgerEntry rows.
+//  - Entries in one transaction must sum to zero per currency (enforced in code, src/lib/ledger.ts).
+//  - Ledger rows are append-only. Corrections are new reversing transactions.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Currency {
+  USD
+  EUR
+  GBP
+  JPY
+  KRW
+  NGN
+  CAD
+  AUD
+}
+
+enum AccountStatus {
+  ACTIVE
+  FROZEN    // no debits or credits (e.g. fraud hold)
+  SUSPENDED // user cannot transact; set by compliance
+  DORMANT   // auto-set after inactivity; reactivates on login + verification
+  CLOSED
+}
+
+enum AccountKind {
+  CUSTOMER
+  SYSTEM // house accounts: demo funding source, FX position, fees
+}
+
+enum TransactionType {
+  DEMO_TOPUP
+  ADMIN_ADJUSTMENT // credit/debit posted by an administrator, always with a reason
+  CARD_PURCHASE
+  LOAN_DISBURSEMENT
+  LOAN_REPAYMENT
+  EXTERNAL_TRANSFER
+  CRYPTO_TRADE
+  TRANSFER
+  FX_CONVERSION
+  FEE
+  REVERSAL
+}
+
+enum TransactionStatus {
+  PENDING
+  POSTED
+  FAILED
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum KycStatus {
+  NOT_STARTED
+  DEMO_VERIFIED // simulated: set automatically at signup in this demo
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  role          Role      @default(USER)
+  fullName      String
+  locale        String    @default("en") // "en" | "ko"
+
+  // Profile collected at signup. Optional/defaulted so existing rows migrate cleanly.
+  phone             String? // E.164, e.g. +14155550132
+  country           String    @default("US") // "US" | "KR"
+  dateOfBirth       DateTime? @db.Date
+  gender            String? // "male" | "female" | "other" | "undisclosed"
+  occupation        String?
+  addressLine1      String?
+  city              String?
+  region            String? // state / province (optional)
+  postalCode        String?
+  preferredCurrency Currency  @default(USD)
+  marketingOptIn    Boolean   @default(false)
+  termsAcceptedAt   DateTime?
+
+  // Next of kin
+  nokName         String?
+  nokEmail        String?
+  nokPhone        String?
+  nokRelationship String?
+  nokAddress      String?
+
+  // Transaction PIN, stored only as an Argon2 hash. Needs attempt limiting where it is verified.
+  pinHash           String?
+  pinFailedAttempts Int       @default(0)
+  pinLockedUntil    DateTime?
+
+  // Simulated KYC: only the chosen document TYPE is recorded. No documents or ID/tax numbers.
+  kycStatus       KycStatus @default(NOT_STARTED)
+  kycDocumentType String?
+
+  mfaSecret     String? // TOTP secret (encrypt at rest in a later phase)
+  mfaEnabledAt  DateTime?
+  createdAt     DateTime  @default(now())
+  lastLoginAt   DateTime?
+
+  accounts Account[]
+  sessions Session[]
+
+  cards             Card[]
+  loans             Loan[]
+  requestsMade      PaymentRequest[] @relation("RequestsMade")
+  requestsReceived  PaymentRequest[] @relation("RequestsReceived")
+  externalTransfers ExternalTransfer[]
+  cryptoHoldings    CryptoHolding[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String   @unique
+  userAgent String?
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Account {
+  id            String        @id @default(cuid())
+  userId        String? // null for SYSTEM accounts
+  kind          AccountKind   @default(CUSTOMER)
+  currency      Currency
+  accountNumber String        @unique
+  status        AccountStatus @default(ACTIVE)
+  statusReason  String?
+  // Cached balance, updated in the same DB transaction as the entries.
+  // The ledger is the source of truth; a nightly job should verify cache == SUM(entries).
+  balanceMinor  BigInt        @default(0)
+  lastActivityAt DateTime     @default(now())
+  createdAt     DateTime      @default(now())
+
+  user    User?         @relation(fields: [userId], references: [id])
+  entries LedgerEntry[]
+  cards   Card[]
+
+  @@unique([userId, currency]) // one wallet per currency per user
+  @@index([userId])
+}
+
+model LedgerTransaction {
+  id             String            @id @default(cuid())
+  type           TransactionType
+  status         TransactionStatus @default(POSTED)
+  description    String?
+  // Client-supplied key so retries never double-post.
+  idempotencyKey String            @unique
+  reversesId     String?           @unique // set when this transaction reverses another
+  reference      String? // id of the card / loan / request this transaction belongs to
+  createdAt      DateTime          @default(now())
+
+  entries LedgerEntry[]
+
+  @@index([reference])
+}
+
+model LedgerEntry {
+  id            String   @id @default(cuid())
+  transactionId String
+  accountId     String
+  currency      Currency
+  // Signed minor units: positive = credit to the account, negative = debit.
+  amountMinor   BigInt
+  createdAt     DateTime @default(now())
+
+  transaction LedgerTransaction @relation(fields: [transactionId], references: [id])
+  account     Account           @relation(fields: [accountId], references: [id])
+
+  @@index([accountId, createdAt])
+  @@index([transactionId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String? // user id, or null for system jobs
+  action    String // e.g. "account.status.changed", "auth.login.failed"
+  targetId  String?
+  metadata  Json?
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@index([actorId, createdAt])
+  @@index([action, createdAt])
+}
+
+enum CardStatus {
+  ACTIVE
+  FROZEN // customer paused it
+  BLOCKED // administrator blocked it
+}
+
+enum LoanStatus {
+  PENDING
+  ACTIVE
+  REJECTED
+  PAID
+}
+
+enum RequestStatus {
+  PENDING
+  PAID
+  DECLINED
+  CANCELLED
+}
+
+enum ExternalStatus {
+  PROCESSING
+  COMPLETED
+  REJECTED
+}
+
+// Virtual card. Only the last 4 digits are stored; the full number is never kept.
+model Card {
+  id                String     @id @default(cuid())
+  userId            String
+  accountId         String
+  last4             String
+  expMonth          Int
+  expYear           Int
+  nameOnCard        String
+  status            CardStatus @default(ACTIVE)
+  statusReason      String?
+  perTxLimitMinor   BigInt
+  monthlyLimitMinor BigInt
+  createdAt         DateTime   @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id])
+
+  @@index([userId])
+}
+
+model Loan {
+  id             String     @id @default(cuid())
+  userId         String
+  accountId      String
+  currency       Currency
+  principalMinor BigInt
+  aprBps         Int // annual rate in basis points, 1100 = 11.00%
+  termMonths     Int
+  purpose        String
+  status         LoanStatus @default(PENDING)
+  decisionReason String?
+  decidedAt      DateTime?
+  disbursedAt    DateTime?
+  createdAt      DateTime   @default(now())
+
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  installments LoanInstallment[]
+
+  @@index([userId, status])
+}
+
+model LoanInstallment {
+  id             String    @id @default(cuid())
+  loanId         String
+  number         Int
+  dueDate        DateTime  @db.Date
+  principalMinor BigInt
+  interestMinor  BigInt
+  paidAt         DateTime?
+
+  loan Loan @relation(fields: [loanId], references: [id], onDelete: Cascade)
+
+  @@unique([loanId, number])
+}
+
+model PaymentRequest {
+  id             String        @id @default(cuid())
+  requesterId    String
+  payerId        String
+  toAccountId    String // requester's wallet that receives the money
+  payerAccountId String? // payer's wallet that paid (set when paid)
+  currency       Currency
+  amountMinor    BigInt
+  note           String?
+  status         RequestStatus @default(PENDING)
+  createdAt      DateTime      @default(now())
+  resolvedAt     DateTime?
+
+  requester User @relation("RequestsMade", fields: [requesterId], references: [id], onDelete: Cascade)
+  payer     User @relation("RequestsReceived", fields: [payerId], references: [id], onDelete: Cascade)
+
+  @@index([payerId, status])
+  @@index([requesterId, status])
+}
+
+// Simulated transfer to an outside bank. The ledger entry is real; the outside bank is pretend.
+model ExternalTransfer {
+  id               String         @id @default(cuid())
+  userId           String
+  accountId        String
+  currency         Currency
+  amountMinor      BigInt
+  feeMinor         BigInt
+  bankName         String
+  recipientName    String
+  recipientAccount String
+  status           ExternalStatus @default(PROCESSING)
+  decisionReason   String?
+  transactionId    String?
+  createdAt        DateTime       @default(now())
+  completedAt      DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+// Paper-trading balance. quantity is in 1e-8 units of the coin (like satoshis).
+model CryptoHolding {
+  id       String @id @default(cuid())
+  userId   String
+  asset    String
+  quantity BigInt @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, asset])
+}

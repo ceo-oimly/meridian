@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1b2b;
+  --color-ink-soft: #3b4b5c;
+  --color-paper: #f7f5f0;
+  --color-card: #ffffff;
+  --color-line: #e3dfd6;
+  --color-brand: #0f4c5c;
+  --color-brand-dark: #0a3641;
+  --color-accent: #e0a458;
+  --color-danger: #b3261e;
+
+  --font-sans: var(--font-inter), var(--font-noto-kr), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), var(--font-noto-kr), ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Korean text reads better with looser line height and word-based wrapping. */
+:lang(ko) body,
+:lang(ko) {
+  word-break: keep-all;
+  line-height: 1.7;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
