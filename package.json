@@ -16,6 +16,7 @@
     "db:studio": "prisma studio",
     "make-admin": "node --env-file=.env scripts/make-admin.mjs",
     "create-admin": "node --env-file=.env scripts/create-admin.mjs",
+    "reset-password": "node --env-file=.env scripts/reset-password.mjs",
     "generate-secrets": "node scripts/generate-secrets.mjs",
     "postinstall": "prisma generate"
   },

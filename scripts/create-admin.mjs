@@ -106,3 +106,4 @@ try {
 } finally {
   await db.$disconnect();
 }
+
